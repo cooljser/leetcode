@@ -15,25 +15,23 @@
  * @return {number}
  */
 var deleteAndEarn = function (nums) {
-  const sum = new Array(Math.max(...nums) + 1).fill(0);
-  let ret = 0;
-  for (let value of nums) {
-    sum[value] += value;
+  let max = Math.max(...nums);
+  let sums= new Array(max + 1).fill(0);
+  for (let val of nums) {
+    sums[val] += val;
   }
-  return rob(sum);
+  return rob(sums);
 };
 
-var rob = function (sum) {
-  let len = sum.length;
-  let p = sum[0];
-  let q = Math.max(sum[0], sum[1]);
-
-  for (let i = 2; i < len; i++) {
-    const temp = q;
-    q = Math.max(p + sum[i], q);
+var rob = function (sums) {
+  let p = sums[0];
+  if (sums.length === 1) return p;
+  let q = Math.max(sums[0], sums[1]);
+  for (let i = 2; i < sums.length; i++) {
+    let temp = q;
+    q = Math.max(p + sums[i], q);
     p = temp;
   }
-
   return q;
 };
 

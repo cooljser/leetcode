@@ -1,3 +1,4 @@
+
 /**
  * https://leetcode-cn.com/problems/house-robber/
  * 你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，
@@ -11,36 +12,19 @@
  * @return {number}
  */
 var rob = function (nums) {
-  const len = nums.length;
-  if (nums === null || len === 0) return 0;
-  if (nums.length === 1) return nums[0];
-
   let p = nums[0];
+  if (nums.length === 1) return p;
   let q = Math.max(nums[0], nums[1]);
-  
 
-  for (let i = 2; i < len; i++) {
-    const ret = q;
+  for (let i = 2; i < nums.length; i++) {
+    let temp = q;
     q = Math.max(p + nums[i], q);
-    p = ret;
+    p = temp;
   }
 
   return q;
 };
 
-// var rob = function (nums) {
-// const len = nums.length;
-// if (nums === null || len === 0) return 0;
-// if (len === 1) return nums[0];
-
-// const rs = [nums[0], Math.max(nums[0], nums[1])];
-
-// for (let i = 2; i < len; i++) {
-// rs[i] = Math.max(rs[i - 2] + nums[i], rs[i - 1]);
-// }
-
-// return rs[len - 1];
-// };
 
 console.log(rob([1, 2, 3, 1]));
 console.log(rob([2, 7, 9, 3, 1]));
