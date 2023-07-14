@@ -6,23 +6,15 @@
  * @return {boolean}
  */
 var canJump = function (nums) {
-  if (nums.length === 1) return true;
+  let right = 0;
 
-  let step = nums[0];
-
-  for (var i = 0, len = nums.length; i < len; i++) {
-    if (step === 0) {
-      break;
+  for (let i = 0; i < nums.length; i++) {
+    if (i > right) {
+      return false;
     }
-
-    step = Math.max(step - 1, nums[i]);
-
-    if (step >= len - i) {
-      i == len;
-    }
+    right = Math.max(right, i + nums[i]);
   }
-
-  return i === len;
+  return right >= nums.length - 1;
 };
 
 console.log(canJump([2, 3, 1, 1, 4]));

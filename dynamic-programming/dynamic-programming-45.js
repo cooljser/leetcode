@@ -16,28 +16,24 @@ console.log(jump([1, 2,3,4])); // 2
  * @return {number}
  */
 var jump = function (nums) {
-  let len = nums.length;
-  let steps = 0;
-  let end = 0;
+  let step = 0;
   let maxPosition = 0;
-
-  for (let i = 0; i < len - 1; i++) {
+  let end = 0;
+  for (let i = 0; i < nums.length - 1; i++) {
     maxPosition = Math.max(maxPosition, nums[i] + i);
-
     if (i === end) {
       end = maxPosition;
-      steps++;
+      step++;
     }
   }
-
-  return steps;
+  return step;
 };
 
 console.log(jump([2, 3, 1, 1, 4])); // 2
-// console.log(jump([2, 3, 0, 1, 4])); // 2
-// console.log(jump([2, 3])); // 1
-// console.log(jump([1, 2, 3])); // 2
-// console.log(jump([3, 2, 1])); // 1
-// console.log(jump([1, 2, 3, 4])); // 2
-// console.log(jump([1, 2, 1, 1, 1])); // 3
-// console.log(jump([7, 0, 9, 6, 9, 6, 1, 7, 9, 0, 1, 2, 9, 0, 3])); //2
+console.log(jump([2, 3, 0, 1, 4])); // 2
+console.log(jump([2, 3])); // 1
+console.log(jump([1, 2, 3])); // 2
+console.log(jump([3, 2, 1])); // 1
+console.log(jump([1, 2, 3, 4])); // 2
+console.log(jump([1, 2, 1, 1, 1])); // 3
+console.log(jump([7, 0, 9, 6, 9, 6, 1, 7, 9, 0, 1, 2, 9, 0, 3])); //2
